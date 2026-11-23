@@ -41,10 +41,26 @@ def init_db():
             image_url TEXT NOT NULL
         )""")
 
-        if not db.execute("SELECT id FROM admins").fetchone():
+                username = os.environ.get("ADMIN_USERNAME")
+        password = os.environ.get("ADMIN_PASSWORD")
+
+        if not username or not password:
+            raise RuntimeError("Admin credentials are missing")
+
+        existing = db.execute(
+            "SELECT id FROM admins ORDER BY id LIMIT 1"
+        ).fetchone()
+
+        if existing:
+            db.execute(
+                "UPDATE admins SET username=?, password=? WHERE id=?",
+                (username, generate_password_hash(password), existing["id"])
+            )
+        else:
             db.execute(
                 "INSERT INTO admins (username,password) VALUES (?,?)",
-                ("admin", generate_password_hash("ChangeMe@123"))
+                (username, generate_password_hash(password))
+            )
             )
 
 init_db()
