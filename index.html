@@ -1,0 +1,3504 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2563eb">
+
+<title>SHREE KARNI COMPUTER & EMITRA SEVA KENDRA</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+:root{
+    --bg:#eef4ff;
+    --card:#ffffff;
+    --text:#172033;
+    --muted:#64748b;
+    --primary:#2563eb;
+    --secondary:#7c3aed;
+    --cyan:#06b6d4;
+    --green:#059669;
+    --orange:#f97316;
+    --red:#dc2626;
+    --border:#dbe5f1;
+    --shadow:0 10px 30px rgba(15,23,42,.10);
+}
+
+body.dark{
+    --bg:#07111f;
+    --card:#111d2e;
+    --text:#f8fafc;
+    --muted:#cbd5e1;
+    --border:#26364d;
+    --shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    padding:16px;
+    font-family:Arial,"Noto Sans Devanagari",sans-serif;
+    background:
+        radial-gradient(circle at 5% 5%,rgba(37,99,235,.15),transparent 25%),
+        radial-gradient(circle at 95% 95%,rgba(124,58,237,.15),transparent 25%),
+        var(--bg);
+    color:var(--text);
+    transition:.3s;
+}
+
+button,
+input,
+select,
+textarea{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+.container{
+    width:min(1280px,100%);
+    margin:auto;
+}
+
+/* ================= HEADER ================= */
+
+.header{
+    position:relative;
+    overflow:hidden;
+    padding:22px 28px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:24px;
+    box-shadow:var(--shadow);
+}
+
+.header::before{
+    content:"";
+    position:absolute;
+    width:250px;
+    height:250px;
+    right:-100px;
+    top:-130px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    opacity:.12;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    position:relative;
+    z-index:2;
+}
+
+.logo{
+    width:72px;
+    height:72px;
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:26px;
+    font-weight:900;
+    background:linear-gradient(135deg,#2563eb,#7c3aed,#06b6d4);
+    box-shadow:
+        0 0 12px #2563eb,
+        0 0 28px rgba(124,58,237,.45);
+    overflow:hidden;
+}
+
+.logo img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    background:white;
+}
+
+.brand h1{
+    font-size:25px;
+    font-weight:900;
+    margin-bottom:6px;
+}
+
+.brand p{
+    color:var(--muted);
+    font-size:14px;
+    font-weight:bold;
+    margin-top:4px;
+}
+
+.header-buttons{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    position:relative;
+    z-index:3;
+}
+
+.header-buttons button{
+    border:1px solid var(--border);
+    background:var(--card);
+    color:var(--text);
+    padding:11px 15px;
+    border-radius:11px;
+    font-weight:bold;
+    transition:.25s;
+}
+
+.header-buttons button:hover{
+    transform:translateY(-2px);
+    border-color:var(--primary);
+}
+
+/* ================= OFFER ================= */
+
+.offer-wrap{
+    margin:16px 0;
+    overflow:hidden;
+    border-radius:15px;
+    background:linear-gradient(
+        90deg,
+        #dc2626,
+        #f97316,
+        #eab308,
+        #f97316,
+        #dc2626
+    );
+    box-shadow:
+        0 0 12px rgba(239,68,68,.35),
+        0 5px 20px rgba(0,0,0,.12);
+}
+
+.offer{
+    display:inline-block;
+    white-space:nowrap;
+    padding:13px 0;
+    color:white;
+    font-size:17px;
+    font-weight:900;
+    animation:offerRun 20s linear infinite;
+}
+
+@keyframes offerRun{
+    from{transform:translateX(100%)}
+    to{transform:translateX(-100%)}
+}
+
+/* ================= NAV ================= */
+
+.nav{
+    position:sticky;
+    top:8px;
+    z-index:100;
+    display:flex;
+    gap:7px;
+    flex-wrap:wrap;
+    justify-content:center;
+    padding:10px;
+    margin-bottom:25px;
+    background:rgba(255,255,255,.9);
+    backdrop-filter:blur(15px);
+    border:1px solid var(--border);
+    border-radius:16px;
+    box-shadow:0 5px 20px rgba(15,23,42,.08);
+}
+
+body.dark .nav{
+    background:rgba(17,29,46,.92);
+}
+
+.nav button{
+    border:1px solid var(--border);
+    background:transparent;
+    color:var(--text);
+    padding:10px 15px;
+    border-radius:10px;
+    font-weight:bold;
+    transition:.25s;
+}
+
+.nav button:hover,
+.nav button.active{
+    color:white;
+    border-color:transparent;
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    transform:translateY(-1px);
+}
+
+/* ================= SECTIONS ================= */
+
+.section{
+    display:none;
+    animation:fadeIn .35s ease;
+}
+
+.section.active{
+    display:block;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.section-title{
+    text-align:center;
+    margin:25px 0;
+}
+
+.section-title h2{
+    font-size:29px;
+    font-weight:900;
+    background:linear-gradient(
+        90deg,
+        #2563eb,
+        #7c3aed,
+        #0891b2
+    );
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+.section-title p{
+    margin-top:7px;
+    color:var(--muted);
+    font-weight:bold;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    position:relative;
+    overflow:hidden;
+    min-height:360px;
+    border-radius:25px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:35px;
+    margin-bottom:28px;
+    color:white;
+    background:
+        linear-gradient(
+            rgba(0,38,90,.78),
+            rgba(37,30,100,.82)
+        ),
+        url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3")
+        center/cover;
+    box-shadow:var(--shadow);
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    background:rgba(0,220,255,.20);
+    filter:blur(35px);
+    top:-100px;
+    left:-100px;
+    animation:heroLight 6s infinite alternate;
+}
+
+@keyframes heroLight{
+    to{
+        left:85%;
+        top:60%;
+    }
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+}
+
+.hero h2{
+    font-size:44px;
+    margin-bottom:13px;
+}
+
+.hero p{
+    font-size:19px;
+    margin-bottom:22px;
+}
+
+.hero-badges{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:20px;
+}
+
+.hero-badges span{
+    padding:7px 13px;
+    border-radius:30px;
+    background:rgba(255,255,255,.15);
+    border:1px solid rgba(255,255,255,.3);
+    font-size:13px;
+    font-weight:bold;
+    backdrop-filter:blur(8px);
+}
+
+/* ================= BUTTON ================= */
+
+.btn{
+    position:relative;
+    overflow:hidden;
+    display:inline-block;
+    border:0;
+    background:#ff6600;
+    color:white;
+    padding:13px 23px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:bold;
+    margin:4px;
+    transition:.25s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(0,0,0,.2);
+}
+
+.btn::after{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:45%;
+    height:100%;
+    background:rgba(255,255,255,.35);
+    transform:skewX(-25deg);
+    animation:shine 3.5s infinite;
+}
+
+@keyframes shine{
+    0%{left:-100%}
+    40%{left:130%}
+    100%{left:130%}
+}
+
+.btn.blue{
+    background:linear-gradient(135deg,#2563eb,#06b6d4);
+}
+
+.btn.green{
+    background:#059669;
+}
+
+.btn.purple{
+    background:linear-gradient(135deg,#7c3aed,#db2777);
+}
+
+/* ================= GRID ================= */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.card{
+    position:relative;
+    overflow:hidden;
+    min-height:145px;
+    padding:20px;
+    border-radius:18px;
+    border:1px solid var(--border);
+    background:var(--card);
+    color:var(--text);
+    text-decoration:none;
+    box-shadow:var(--shadow);
+    transition:.3s;
+    cursor:pointer;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    box-shadow:
+        0 15px 35px rgba(37,99,235,.18);
+}
+
+.card::after{
+    content:"";
+    position:absolute;
+    right:-35px;
+    bottom:-45px;
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    background:rgba(255,255,255,.18);
+}
+
+.card .icon{
+    font-size:34px;
+    margin-bottom:10px;
+}
+
+.card h3{
+    margin-bottom:7px;
+    font-size:17px;
+}
+
+.card p{
+    font-size:13px;
+    color:var(--muted);
+    font-weight:bold;
+}
+
+.top-quick .card{
+    color:white;
+}
+
+.top-quick .card h3,
+.top-quick .card p{
+    color:white;
+}
+
+.top-quick .card:nth-child(1){
+    background:linear-gradient(135deg,#2563eb,#06b6d4);
+}
+
+.top-quick .card:nth-child(2){
+    background:linear-gradient(135deg,#7c3aed,#db2777);
+}
+
+.top-quick .card:nth-child(3){
+    background:linear-gradient(135deg,#059669,#14b8a6);
+}
+
+.course-card{
+    background:var(--card);
+}
+
+.course-card h3{
+    color:#2563eb;
+}
+
+/* ================= OFFER CARD ================= */
+
+.offer-card{
+    position:relative;
+    overflow:hidden;
+    margin:25px auto;
+    padding:22px;
+    max-width:900px;
+    text-align:center;
+    border:2px solid #f97316;
+    border-radius:20px;
+    background:linear-gradient(
+        135deg,
+        var(--card),
+        rgba(239,246,255,.9)
+    );
+    box-shadow:0 0 15px rgba(249,115,22,.25);
+}
+
+.offer-card h3{
+    color:#ea580c;
+    font-size:24px;
+}
+
+.offer-card p{
+    margin-top:8px;
+    color:var(--muted);
+    font-weight:bold;
+}
+
+.offer-badge{
+    display:inline-block;
+    padding:7px 15px;
+    margin-bottom:10px;
+    border-radius:30px;
+    background:#dc2626;
+    color:white;
+    font-weight:900;
+    animation:pulse 1.4s infinite;
+}
+
+@keyframes pulse{
+    50%{
+        transform:scale(1.06);
+        box-shadow:0 0 20px rgba(220,38,38,.5);
+    }
+}
+
+/* ================= SEARCH ================= */
+
+.search{
+    display:flex;
+    max-width:750px;
+    margin:25px auto;
+}
+
+.search input{
+    flex:1;
+    padding:14px;
+    border:1px solid var(--border);
+    border-radius:12px 0 0 12px;
+    background:var(--card);
+    color:var(--text);
+    outline:none;
+}
+
+.search button{
+    width:105px;
+    border:0;
+    border-radius:0 12px 12px 0;
+    background:#2563eb;
+    color:white;
+    font-weight:bold;
+}
+
+/* ================= QUICK LINKS ================= */
+
+.quick-links{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin:15px 0 30px;
+}
+
+.quick-links a{
+    padding:12px 17px;
+    border-radius:12px;
+    text-decoration:none;
+    color:white;
+    font-weight:900;
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    box-shadow:0 6px 16px rgba(37,99,235,.18);
+    transition:.25s;
+}
+
+.quick-links a:hover{
+    transform:translateY(-3px);
+}
+
+/* ================= SERVICES ================= */
+
+.service-grid .card{
+    min-height:130px;
+}
+
+.service-grid .card h3{
+    color:#2563eb;
+}
+
+/* ================= CUSTOM LINKS ================= */
+
+.custom-links{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+.custom-link{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    padding:15px;
+    border-radius:14px;
+    background:var(--card);
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+}
+
+.custom-link b{
+    color:#2563eb;
+}
+
+.custom-link span{
+    color:var(--muted);
+    font-size:12px;
+    font-weight:bold;
+}
+
+.custom-link button{
+    border:0;
+    background:#dc2626;
+    color:white;
+    border-radius:7px;
+    padding:6px 9px;
+}
+
+/* ================= PANEL ================= */
+
+.panel{
+    padding:20px;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:20px;
+    box-shadow:var(--shadow);
+}
+
+.panel h2{
+    margin-bottom:15px;
+    color:var(--primary);
+}
+
+.editor{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.upload{
+    padding:18px;
+    text-align:center;
+    border:2px dashed #60a5fa;
+    border-radius:13px;
+    background:#eff6ff;
+    color:#172033;
+}
+
+.upload input{
+    max-width:100%;
+    margin-top:10px;
+}
+
+/* ================= CANVAS ================= */
+
+.preview{
+    margin-top:15px;
+    padding:12px;
+    border-radius:14px;
+    background:#d1d5db;
+}
+
+#editorCanvas{
+    display:block;
+    width:100%;
+    max-width:380px;
+    height:auto;
+    margin:auto;
+    background:white;
+    border:2px solid #334155;
+}
+
+/* ================= TOOLS ================= */
+
+.tools{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:9px;
+    margin-top:15px;
+}
+
+.tools button,
+.actions button,
+.pvc-controls button{
+    border:0;
+    padding:11px;
+    border-radius:9px;
+    color:white;
+    font-weight:bold;
+}
+
+.b1{background:#2563eb}
+.b2{background:#7c3aed}
+.b3{background:#059669}
+.b4{background:#0891b2}
+.b5{background:#64748b}
+.danger{background:#dc2626!important}
+
+.slider{
+    margin-top:15px;
+}
+
+.slider label{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:5px;
+    font-weight:bold;
+}
+
+.slider input{
+    width:100%;
+}
+
+select{
+    width:100%;
+    padding:11px;
+    border:1px solid #94a3b8;
+    border-radius:9px;
+    background:white;
+    color:#172033;
+}
+
+.actions{
+    display:flex;
+    gap:10px;
+    margin-top:16px;
+}
+
+.actions button{
+    flex:1;
+}
+
+/* ================= SHEET ================= */
+
+.sheet-area{
+    display:flex;
+    justify-content:center;
+    overflow:auto;
+    padding:15px;
+    background:#d1d5db;
+    border-radius:13px;
+}
+
+.photo-sheet{
+    width:101.6mm;
+    height:152.4mm;
+    padding:3mm;
+    background:white;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    grid-template-rows:repeat(4,1fr);
+    gap:2mm;
+    flex-shrink:0;
+}
+
+.photo-box{
+    position:relative;
+    overflow:hidden;
+    background:white;
+    border:.25mm solid #999;
+}
+
+.photo-box img{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+}
+
+.empty{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#94a3b8;
+    background:#f8fafc;
+    font-size:12px;
+    font-weight:bold;
+    z-index:2;
+}
+
+.photo-box.has-photo .empty{
+    display:none;
+}
+
+/* ================= PVC ================= */
+
+.pvc-controls{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-bottom:20px;
+}
+
+.filebox{
+    padding:14px;
+    border:1px solid var(--border);
+    border-radius:12px;
+    background:var(--card);
+}
+
+.filebox label{
+    display:block;
+    margin-bottom:7px;
+    font-weight:bold;
+}
+
+.cards{
+    display:flex;
+    justify-content:center;
+    gap:45px;
+    flex-wrap:wrap;
+}
+
+.card-wrap{
+    text-align:center;
+}
+
+.card-title{
+    font-weight:900;
+    margin-bottom:10px;
+}
+
+.pvc-card{
+    width:98mm;
+    height:54mm;
+    position:relative;
+    overflow:hidden;
+    background:white;
+    border:1px solid #64748b;
+}
+
+.pvc-card img{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:contain;
+    background:white;
+}
+
+.pvc-card .empty{
+    font-size:16px;
+}
+
+.fold-sheet{
+    width:101.6mm;
+    height:152.4mm;
+    margin:auto;
+    background:white;
+    position:relative;
+    overflow:hidden;
+    border:1px solid #cbd5e1;
+}
+
+.fold-card{
+    position:absolute;
+    width:98mm;
+    height:54mm;
+    left:1.8mm;
+    overflow:hidden;
+    background:white;
+}
+
+.fold-card img{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:contain;
+    background:white;
+}
+
+.fold-front{
+    top:22mm;
+}
+
+.fold-back{
+    top:76mm;
+    transform:rotate(180deg);
+}
+
+.fold-line{
+    position:absolute;
+    left:1.8mm;
+    top:76mm;
+    width:98mm;
+    border-top:.25mm dashed #64748b;
+}
+
+/* ================= INFO ================= */
+
+.info{
+    margin-top:18px;
+    padding:14px;
+    text-align:center;
+    border-radius:13px;
+    background:#eff6ff;
+    color:#164e63;
+    font-weight:bold;
+    line-height:1.6;
+}
+
+/* ================= CONTACT ================= */
+
+.contact-box{
+    padding:35px 20px;
+    border-radius:24px;
+    color:white;
+    text-align:center;
+    background:
+        linear-gradient(
+            135deg,
+            #0d47a1,
+            #7b1fa2,
+            #00897b
+        );
+    box-shadow:var(--shadow);
+}
+
+.contact-box h2{
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+.contact-box p{
+    margin:8px;
+    font-size:17px;
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+    margin-top:30px;
+    padding:20px;
+    text-align:center;
+    color:white;
+    border-radius:18px;
+    background:linear-gradient(
+        135deg,
+        #0d47a1,
+        #7b1fa2,
+        #00897b
+    );
+    line-height:1.7;
+}
+
+/* ================= FLOATING BUTTONS ================= */
+
+.whatsapp{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    z-index:999;
+    width:60px;
+    height:60px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:#25d366;
+    color:white;
+    text-decoration:none;
+    font-size:29px;
+    box-shadow:
+        0 0 10px #25d366,
+        0 0 25px rgba(37,211,102,.55);
+    animation:waPulse 1.5s infinite;
+}
+
+@keyframes waPulse{
+    50%{
+        transform:scale(1.1);
+    }
+}
+
+/* ================= GALLERY ================= */
+
+.gallery{
+    position:relative;
+    max-width:900px;
+    height:430px;
+    margin:auto;
+    overflow:hidden;
+    border-radius:20px;
+    background:#ddd;
+    box-shadow:var(--shadow);
+}
+
+.gallery-track{
+    height:100%;
+    display:flex;
+    transition:transform .6s ease;
+}
+
+.gallery-track img{
+    min-width:100%;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.gallery-btn{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:45px;
+    height:45px;
+    border:0;
+    border-radius:50%;
+    background:rgba(0,0,0,.6);
+    color:white;
+    font-size:22px;
+    z-index:4;
+}
+
+.gallery-btn:hover{
+    background:#ff6600;
+}
+
+.gallery-prev{
+    left:15px;
+}
+
+.gallery-next{
+    right:15px;
+}
+
+.gallery-dots{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:13px;
+    text-align:center;
+}
+
+.gallery-dots span{
+    display:inline-block;
+    width:10px;
+    height:10px;
+    margin:0 4px;
+    border-radius:50%;
+    background:white;
+    opacity:.65;
+    cursor:pointer;
+}
+
+.gallery-dots span.active{
+    background:#ff6600;
+    opacity:1;
+    transform:scale(1.3);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1000px){
+    .grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .editor{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:650px){
+
+    body{
+        padding:7px;
+    }
+
+    .header{
+        flex-direction:column;
+        text-align:center;
+        padding:20px 12px;
+    }
+
+    .brand{
+        flex-direction:column;
+    }
+
+    .brand h1{
+        font-size:20px;
+    }
+
+    .header-buttons{
+        justify-content:center;
+    }
+
+    .nav{
+        top:4px;
+    }
+
+    .nav button{
+        flex:1;
+        min-width:100px;
+        font-size:13px;
+        padding:9px 7px;
+    }
+
+    .hero{
+        min-height:390px;
+        padding:25px 15px;
+    }
+
+    .hero h2{
+        font-size:30px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .grid,
+    .custom-links{
+        grid-template-columns:1fr;
+    }
+
+    .tools{
+        grid-template-columns:1fr;
+    }
+
+    .actions{
+        flex-direction:column;
+    }
+
+    .gallery{
+        height:270px;
+    }
+
+    .offer{
+        font-size:15px;
+    }
+
+    .photo-sheet,
+    .fold-sheet{
+        transform-origin:top center;
+    }
+
+    .contact-box h2{
+        font-size:25px;
+    }
+}
+
+/* ================= PRINT ================= */
+
+@media print{
+
+    @page{
+        margin:0;
+        size:auto;
+    }
+
+    body{
+        padding:0!important;
+        margin:0!important;
+        background:white!important;
+    }
+
+    .header,
+    .offer-wrap,
+    .nav,
+    .no-print,
+    .footer,
+    .whatsapp{
+        display:none!important;
+    }
+
+    .container{
+        width:100%!important;
+        margin:0!important;
+    }
+
+    .section{
+        display:none!important;
+    }
+
+    body.print-photo .photo-section{
+        display:block!important;
+    }
+
+    body.print-fold .fold-section{
+        display:block!important;
+    }
+
+    body.print-single-front .single-section,
+    body.print-single-back .single-section{
+        display:block!important;
+    }
+
+    body.print-photo .photo-sheet{
+        margin:0!important;
+        box-shadow:none!important;
+    }
+
+    body.print-fold .fold-sheet{
+        margin:0!important;
+        border:0!important;
+    }
+
+    body.print-single-front .single-back,
+    body.print-single-back .single-front{
+        display:none!important;
+    }
+
+    body.print-single-front .single-section,
+    body.print-single-back .single-section{
+        padding:0!important;
+    }
+
+    body.print-single-front .single-card,
+    body.print-single-back .single-card{
+        margin:0!important;
+        box-shadow:none!important;
+    }
+
+    .sheet-area{
+        padding:0!important;
+        background:white!important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- ================= HEADER ================= -->
+
+<header class="header no-print">
+
+    <div class="brand">
+
+        <div class="logo">
+            <img src="logo.png"
+                 alt="SK Logo"
+                 onerror="this.style.display='none';this.parentElement.innerHTML='SK'">
+        </div>
+
+        <div>
+            <h1>SHREE KARNI COMPUTER & EMITRA SEVA KENDRA</h1>
+
+            <p>
+                📍 PG COLLEGE के सामने • प्रतापगढ़ (राज.)
+            </p>
+
+            <p>
+                📞 7891411425 &nbsp; | &nbsp; 8852820425
+            </p>
+        </div>
+
+    </div>
+
+    <div class="header-buttons">
+
+        <button onclick="toggleDark()" id="themeBtn">
+            🌙 Dark
+        </button>
+
+        <button onclick="showSection('home')">
+            🏠 Home
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- ================= OFFER ================= -->
+
+<div class="offer-wrap no-print">
+
+    <div class="offer">
+
+        🔥 SPECIAL OFFER 🔥
+        &nbsp;&nbsp; 🎓 COMPUTER COURSES ADMISSION OPEN
+        &nbsp;&nbsp; ⭐ RSCIT • TALLY • PGDCA • DECE • YOGA • LIBRARY COURSE
+        &nbsp;&nbsp; 🚀 LIMITED SEATS
+        &nbsp;&nbsp; 📞 7891411425 • 8852820425
+
+    </div>
+
+</div>
+
+
+<!-- ================= NAV ================= -->
+
+<nav class="nav no-print">
+
+    <button id="nav-home"
+            class="active"
+            onclick="showSection('home')">
+        🏠 Home
+    </button>
+
+    <button id="nav-photo"
+            onclick="showSection('photo')">
+        📷 8 Photo 4×6
+    </button>
+
+    <button id="nav-fold"
+            onclick="showSection('fold')">
+        🪪 PVC Fold
+    </button>
+
+    <button id="nav-single"
+            onclick="showSection('single')">
+        💳 PVC 98×54
+    </button>
+
+    <button id="nav-gallery"
+            onclick="showSection('gallery')">
+        🖼 Gallery
+    </button>
+
+    <button id="nav-contact"
+            onclick="showSection('contact')">
+        📞 Contact
+    </button>
+
+</nav>
+
+
+<!-- ================= HOME ================= -->
+
+<section id="home" class="section active">
+
+    <div class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-badges">
+                <span>🎓 Computer Education</span>
+                <span>💻 Digital Services</span>
+                <span>🏢 e-Mitra Services</span>
+            </div>
+
+            <h2>
+                Welcome to Shree Karni Computer
+            </h2>
+
+            <p>
+                Learn Computer Skills • Get Certified • Build Your Career
+            </p>
+
+            <a class="btn blue"
+               href="#"
+               onclick="showSection('courses');return false;">
+                📚 View Courses
+            </a>
+
+            <a class="btn green"
+               href="https://wa.me/917891411425"
+               target="_blank">
+                💬 WhatsApp
+            </a>
+
+            <a class="btn purple"
+               href="tel:7891411425">
+                📞 Call Now
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- QUICK PRINT -->
+
+    <div class="section-title">
+        <h2>⚡ Quick Print Services</h2>
+        <p>Professional Printing Tools</p>
+    </div>
+
+    <div class="grid top-quick">
+
+        <a class="card"
+           href="#"
+           onclick="showSection('photo');return false;">
+
+            <div class="icon">📷</div>
+
+            <h3>8 PHOTO PRINT</h3>
+
+            <p>
+                8 Photos • 4×6 Inch • Photo Editor
+            </p>
+
+        </a>
+
+
+        <a class="card"
+           href="#"
+           onclick="showSection('fold');return false;">
+
+            <div class="icon">🪪</div>
+
+            <h3>PVC FOLD PRINT</h3>
+
+            <p>
+                98×54 mm • Front + Back • 4×6
+            </p>
+
+        </a>
+
+
+        <a class="card"
+           href="#"
+           onclick="showSection('single');return false;">
+
+            <div class="icon">💳</div>
+
+            <h3>PVC CARD PRINT</h3>
+
+            <p>
+                Exact 98×54 mm • Front / Back
+            </p>
+
+        </a>
+
+    </div>
+
+
+    <!-- OFFER -->
+
+    <div class="offer-card">
+
+        <div class="offer-badge">
+            🔥 SPECIAL OFFER
+        </div>
+
+        <h3>
+            🎓 Computer Courses Admission Open
+        </h3>
+
+        <p>
+            ⭐ RSCIT • TALLY • PGDCA • DECE • YOGA • LIBRARY COURSE
+            <br>
+            🚀 Limited Seats — आज ही संपर्क करें
+        </p>
+
+        <a class="btn"
+           href="https://wa.me/917891411425"
+           target="_blank">
+            📲 Admission on WhatsApp
+        </a>
+
+    </div>
+
+
+    <!-- COURSES -->
+
+    <div id="courses">
+
+        <div class="section-title">
+            <h2>🎓Our Computer & Professional Courses</h2>
+            <p>Career Oriented Courses</p>
+        </div>
+
+        <div class="grid">
+
+            <div class="card course-card">
+                <div class="icon">💻</div>
+                <h3>RSCIT</h3>
+                <p>
+                    Rajasthan State Certificate Course
+                </p>
+                <p>⭐ SPECIAL OFFER</p>
+            </div>
+
+            <div class="card course-card">
+                <div class="icon">📊</div>
+                <h3>TALLY</h3>
+                <p>
+                    Accounting & Computer Course
+                </p>
+                <p>⭐ SPECIAL OFFER</p>
+            </div>
+
+            <div class="card course-card">
+                <div class="icon">🎓</div>
+                <h3>PGDCA</h3>
+                <p>
+                    Post Graduate Computer Course
+                </p>
+                <p>⭐ SPECIAL OFFER</p>
+            </div>
+
+            <div class="card course-card">
+                <div class="icon">📚</div>
+                <h3>DECE</h3>
+                <p>
+                    Diploma Computer Education
+                </p>
+                <p>⭐ SPECIAL OFFER</p>
+            </div>
+
+            <div class="card course-card">
+                <div class="icon">🧘</div>
+                <h3>YOGA</h3>
+                <p>
+                    Yoga Course
+                </p>
+                <p>⭐ SPECIAL OFFER</p>
+            </div>
+
+            <div class="card course-card">
+                <div class="icon">📖</div>
+                <h3>LIBRARY COURSE</h3>
+                <p>
+                    Library & Computer Course
+                </p>
+                <p>⭐ SPECIAL OFFER</p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- SEARCH -->
+
+    <div class="search no-print">
+
+        <input id="search"
+               placeholder="Google Search करें..."
+               onkeydown="if(event.key==='Enter')googleSearch()">
+
+        <button onclick="googleSearch()">
+            🔍 Search
+        </button>
+
+    </div>
+
+
+    <!-- SERVICES -->
+
+    <div class="section-title">
+
+        <h2>⭐ Important Services</h2>
+
+        <p>
+            Centre Quick Access
+        </p>
+
+    </div>
+
+
+    <div class="grid service-grid">
+
+        <a class="card"
+           href="https://emitra.rajasthan.gov.in/"
+           target="_blank">
+            <div class="icon">🏢</div>
+            <h3>e-Mitra</h3>
+            <p>Rajasthan e-Mitra Portal</p>
+        </a>
+
+        <a class="card"
+           href="https://sso.rajasthan.gov.in/"
+           target="_blank">
+            <div class="icon">🔐</div>
+            <h3>Rajasthan SSO</h3>
+            <p>SSO Login</p>
+        </a>
+
+        <a class="card"
+           href="https://myaadhaar.uidai.gov.in/"
+           target="_blank">
+            <div class="icon">🪪</div>
+            <h3>Aadhaar</h3>
+            <p>My Aadhaar</p>
+        </a>
+
+        <a class="card"
+           href="https://abha.abdm.gov.in/"
+           target="_blank">
+            <div class="icon">❤️</div>
+            <h3>ABHA</h3>
+            <p>ABHA Portal</p>
+        </a>
+
+        <a class="card"
+           href="https://janaadhaar.rajasthan.gov.in/"
+           target="_blank">
+            <div class="icon">👨‍👩‍👧</div>
+            <h3>Jan Aadhaar</h3>
+            <p>Jan Aadhaar Rajasthan</p>
+        </a>
+
+        <a class="card"
+           href="https://www.incometax.gov.in/"
+           target="_blank">
+            <div class="icon">💰</div>
+            <h3>Income Tax</h3>
+            <p>Income Tax Portal</p>
+        </a>
+
+        <a class="card"
+           href="https://www.pan.utiitsl.com/"
+           target="_blank">
+            <div class="icon">📇</div>
+            <h3>PAN Services</h3>
+            <p>PAN Related Services</p>
+        </a>
+
+        <a class="card"
+           href="https://www.irctc.co.in/"
+           target="_blank">
+            <div class="icon">🚆</div>
+            <h3>IRCTC</h3>
+            <p>Railway Booking</p>
+        </a>
+
+    </div>
+
+
+    <!-- QUICK LINKS -->
+
+    <div class="section-title">
+
+        <h2>⚡ Quick Links</h2>
+
+    </div>
+
+    <div class="quick-links no-print">
+
+        <a href="https://www.google.com/"
+           target="_blank">
+            🌐 Google
+        </a>
+
+        <a href="https://www.youtube.com/"
+           target="_blank">
+            ▶️ YouTube
+        </a>
+
+        <a href="https://mail.google.com/"
+           target="_blank">
+            ✉️ Gmail
+        </a>
+
+        <a href="https://web.whatsapp.com/"
+           target="_blank">
+            💬 WhatsApp
+        </a>
+
+        <a href="https://www.facebook.com/"
+           target="_blank">
+            📘 Facebook
+        </a>
+
+        <a href="https://maps.google.com/"
+           target="_blank">
+            🗺️ Maps
+        </a>
+
+    </div>
+
+
+    <!-- CUSTOM LINKS -->
+
+    <div class="section-title">
+
+        <h2>➕ My Centre Links</h2>
+
+        <p>
+            अपने links manage करें
+        </p>
+
+    </div>
+
+    <div class="custom-links">
+
+        <div class="custom-link">
+            <b>🔗 GGTU EXAM</b>
+            <span>Custom Website</span>
+            <button onclick="this.parentElement.remove()">✕</button>
+        </div>
+
+        <div class="custom-link">
+            <b>🔗 MY RKCL</b>
+            <span>Custom Website</span>
+            <button onclick="this.parentElement.remove()">✕</button>
+        </div>
+
+        <div class="custom-link">
+            <b>🔗 IGNOU EXAM / ADMIT CARD</b>
+            <span>Custom Website</span>
+            <button onclick="this.parentElement.remove()">✕</button>
+        </div>
+
+        <div class="custom-link">
+            <b>🔗 I LEARN</b>
+            <span>Custom Website</span>
+            <button onclick="this.parentElement.remove()">✕</button>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PHOTO EDITOR ================= -->
+
+<section id="photo" class="section photo-section">
+
+    <div class="section-title no-print">
+
+        <h2>📷 8 Photo — 4×6 Inch</h2>
+
+        <p>
+            Upload → Edit → Preview → Print
+        </p>
+
+    </div>
+
+
+    <div class="editor no-print">
+
+        <!-- EDITOR -->
+
+        <div class="panel">
+
+            <h2>📷 Photo Editor</h2>
+
+            <div class="upload">
+
+                <b>फोटो Upload करें</b>
+
+                <br>
+
+                <input type="file"
+                       id="photoInput"
+                       accept="image/*">
+
+            </div>
+
+
+            <div class="preview">
+
+                <canvas id="editorCanvas"
+                        width="600"
+                        height="750">
+                </canvas>
+
+            </div>
+
+
+            <div class="tools">
+
+                <button class="b1"
+                        onclick="rotateLeft()">
+                    ↶ Rotate Left
+                </button>
+
+                <button class="b1"
+                        onclick="rotateRight()">
+                    ↷ Rotate Right
+                </button>
+
+                <button class="b2"
+                        onclick="cropPhoto()">
+                    ✂ Crop 4:5
+                </button>
+
+                <button class="b3"
+                        onclick="removeBackground()">
+                    🪄 Background Remove
+                </button>
+
+                <button class="b4"
+                        onclick="zoomIn()">
+                    🔍 Zoom +
+                </button>
+
+                <button class="b4"
+                        onclick="zoomOut()">
+                    🔎 Zoom -
+                </button>
+
+                <button class="b5"
+                        onclick="resetPhoto()">
+                    ↺ Reset
+                </button>
+
+            </div>
+
+
+            <div class="slider">
+
+                <label>
+                    <span>Zoom</span>
+                    <span id="zoomText">100%</span>
+                </label>
+
+                <input id="zoomSlider"
+                       type="range"
+                       min="50"
+                       max="200"
+                       value="100">
+
+            </div>
+
+
+            <div class="slider">
+
+                <label>
+                    <span>Left / Right</span>
+                    <span id="xText">0</span>
+                </label>
+
+                <input id="xSlider"
+                       type="range"
+                       min="-200"
+                       max="200"
+                       value="0">
+
+            </div>
+
+
+            <div class="slider">
+
+                <label>
+                    <span>Up / Down</span>
+                    <span id="yText">0</span>
+                </label>
+
+                <input id="ySlider"
+                       type="range"
+                       min="-250"
+                       max="250"
+                       value="0">
+
+            </div>
+
+
+            <div class="slider">
+
+                <label>
+                    Background
+                </label>
+
+                <select id="backgroundSelect">
+
+                    <option value="white">
+                        White
+                    </option>
+
+                    <option value="lightblue">
+                        Light Blue
+                    </option>
+
+                    <option value="none">
+                        Transparent
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="actions">
+
+                <button class="b3"
+                        onclick="printPhotos()">
+                    🖨 PRINT 8 PHOTOS
+                </button>
+
+                <button class="danger"
+                        onclick="clearPhoto()">
+                    ✕ CLEAR
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- PREVIEW -->
+
+        <div class="panel">
+
+            <h2>
+                🖼 Print Preview — 8 Photos
+            </h2>
+
+            <div class="sheet-area">
+
+                <div class="photo-sheet">
+
+                    <div class="photo-box">
+                        <div class="empty">PHOTO 1</div>
+                        <img class="printPhoto">
+                    </div>
+
+                    <div class="photo-box">
+                        <div class="empty">PHOTO 2</div>
+                        <img class="printPhoto">
+                    </div>
+
+                    <div class="photo-box">
+                        <div class="empty">PHOTO 3</div>
+                        <img class="printPhoto">
+                    </div>
+
+                    <div class="photo-box">
+                        <div class="empty">PHOTO 4</div>
+                        <img class="printPhoto">
+                    </div>
+
+                    <div class="photo-box">
+                        <div class="empty">PHOTO 5</div>
+                        <img class="printPhoto">
+                    </div>
+
+                    <div class="photo-box">
+                        <div class="empty">PHOTO 6</div>
+                        <img class="printPhoto">
+                    </div>
+
+                    <div class="photo-box">
+                        <div class="empty">PHOTO 7</div>
+                        <img class="printPhoto">
+                    </div>
+
+                    <div class="photo-box">
+                        <div class="empty">PHOTO 8</div>
+                        <img class="printPhoto">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="info">
+                4×6 Inch • 8 Photos • 2×4 Layout
+                <br>
+                Print Scale: <b>100% / Actual Size</b>
+                • Fit to Page OFF
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOLD PVC ================= -->
+
+<section id="fold" class="section fold-section">
+
+    <div class="section-title no-print">
+
+        <h2>
+            🪪 PVC ID Card Fold Print — 4×6
+        </h2>
+
+        <p>
+            Front + Back • Fold करके Lamination के लिए
+        </p>
+
+    </div>
+
+
+    <div class="pvc-controls no-print">
+
+        <div class="filebox">
+
+            <label>
+                📄 FRONT CARD
+            </label>
+
+            <input type="file"
+                   id="frontFile"
+                   accept="image/*">
+
+        </div>
+
+
+        <div class="filebox">
+
+            <label>
+                📄 BACK CARD
+            </label>
+
+            <input type="file"
+                   id="backFile"
+                   accept="image/*">
+
+        </div>
+
+
+        <button class="b1"
+                onclick="printFold()">
+            🖨 PRINT FRONT + BACK
+        </button>
+
+
+        <button class="danger"
+                onclick="clearFold()">
+            ✕ CLEAR
+        </button>
+
+    </div>
+
+
+    <div class="sheet-area">
+
+        <div class="fold-sheet">
+
+            <div class="fold-card fold-front">
+
+                <div class="empty"
+                     id="frontEmpty">
+                    FRONT CARD
+                </div>
+
+                <img id="frontImage">
+
+            </div>
+
+
+            <div class="fold-card fold-back">
+
+                <div class="empty"
+                     id="backEmpty">
+                    BACK CARD
+                </div>
+
+                <img id="backImage">
+
+            </div>
+
+
+            <div class="fold-line"></div>
+
+        </div>
+
+    </div>
+
+
+    <div class="info no-print">
+
+        Paper:
+        <b>4×6 Inch (101.6×152.4 mm)</b>
+
+        &nbsp; | &nbsp;
+
+        Card:
+        <b>98×54 mm</b>
+
+        &nbsp; | &nbsp;
+
+        Front: ऊपर
+
+        &nbsp; | &nbsp;
+
+        Back: नीचे + 180° Rotate
+
+        &nbsp; | &nbsp;
+
+        Fit to Page OFF
+
+    </div>
+
+</section>
+
+
+<!-- ================= SINGLE PVC ================= -->
+
+<section id="single" class="section single-section">
+
+    <div class="section-title no-print">
+
+        <h2>
+            💳 PVC Card — Exact 98×54 mm
+        </h2>
+
+        <p>
+            Front / Back Individual Printing
+        </p>
+
+    </div>
+
+
+    <div class="pvc-controls no-print">
+
+        <div class="filebox">
+
+            <label>
+                📄 FRONT
+            </label>
+
+            <input type="file"
+                   id="singleFrontFile"
+                   accept="image/*">
+
+        </div>
+
+
+        <div class="filebox">
+
+            <label>
+                📄 BACK
+            </label>
+
+            <input type="file"
+                   id="singleBackFile"
+                   accept="image/*">
+
+        </div>
+
+
+        <button class="b1"
+                onclick="printSingle('front')">
+            🖨 PRINT FRONT
+        </button>
+
+
+        <button class="b2"
+                onclick="printSingle('back')">
+            🖨 PRINT BACK
+        </button>
+
+
+        <button class="danger"
+                onclick="clearSingle()">
+            ✕ CLEAR
+        </button>
+
+    </div>
+
+
+    <div class="cards">
+
+        <div class="card-wrap single-front">
+
+            <div class="card-title no-print">
+                FRONT — 98×54 mm
+            </div>
+
+            <div class="pvc-card single-card">
+
+                <div class="empty"
+                     id="singleFrontEmpty">
+                    FRONT CARD
+                </div>
+
+                <img id="singleFrontImage">
+
+            </div>
+
+        </div>
+
+
+        <div class="card-wrap single-back">
+
+            <div class="card-title no-print">
+                BACK — 98×54 mm
+            </div>
+
+            <div class="pvc-card single-card">
+
+                <div class="empty"
+                     id="singleBackEmpty">
+                    BACK CARD
+                </div>
+
+                <img id="singleBackImage">
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="info no-print">
+
+        PVC Card Exact Size:
+        <b>98 × 54 mm</b>
+
+        <br>
+
+        Printer Setting:
+        <b>100% / Actual Size</b>
+
+        • Fit to Page OFF
+
+    </div>
+
+</section>
+
+
+<!-- ================= GALLERY ================= -->
+
+<section id="gallery" class="section">
+
+    <div class="section-title">
+
+        <h2>
+            🖼️ Our Gallery
+        </h2>
+
+        <p>
+            Shree Karni Computer & Education
+        </p>
+
+    </div>
+
+
+    <div class="gallery">
+
+        <div class="gallery-track"
+             id="galleryTrack">
+
+            <img src="photo1.jpg"
+                 alt="Centre Photo">
+
+            <img src="photo2.jpg"
+                 alt="Computer Lab">
+
+            <img src="photo3.jpg"
+                 alt="Students">
+
+            <img src="photo4.jpg"
+                 alt="Training">
+
+        </div>
+
+
+        <button class="gallery-btn gallery-prev"
+                onclick="galleryMove(-1)">
+            ❮
+        </button>
+
+        <button class="gallery-btn gallery-next"
+                onclick="galleryMove(1)">
+            ❯
+        </button>
+
+
+        <div class="gallery-dots">
+
+            <span onclick="galleryCurrent(0)"></span>
+            <span onclick="galleryCurrent(1)"></span>
+            <span onclick="galleryCurrent(2)"></span>
+            <span onclick="galleryCurrent(3)"></span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section id="contact" class="section">
+
+    <div class="contact-box">
+
+        <h2>
+            📞 Contact Us
+        </h2>
+
+        <p>
+            🏫 SHREE KARNI COMPUTER & EMITRA SEVA KENDRA
+        </p>
+
+        <p>
+            📍 PG COLLEGE के सामने,
+            आटा चक्की के पीछे, शॉप नं. 2
+            — प्रतापगढ़ (राज.)
+        </p>
+
+        <p>
+            📱 7891411425
+            &nbsp; | &nbsp;
+            8852820425
+        </p>
+
+
+        <div>
+
+            <a class="btn"
+               href="tel:7891411425">
+                📞 Call Now
+            </a>
+
+            <a class="btn green"
+               href="https://wa.me/917891411425"
+               target="_blank">
+                💬 WhatsApp
+            </a>
+
+            <a class="btn blue"
+               href="https://maps.app.goo.gl/T3dwvqEd6wF7KKtW7"
+               target="_blank">
+                📍 Open Centre Location
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer no-print">
+
+    <b>
+        SHREE KARNI COMPUTER & EMITRA SEVA KENDRA
+    </b>
+
+    <br>
+
+    PG COLLEGE के सामने,
+    आटा चक्की के पीछे शॉप नं. 2
+    — प्रतापगढ़ (राज.)
+
+    <br>
+
+    📞 7891411425 | 8852820425
+
+    <br>
+
+    © 2026 All Rights Reserved
+
+</footer>
+
+</div>
+
+
+<!-- ================= WHATSAPP ================= -->
+
+<a class="whatsapp"
+   href="https://wa.me/917891411425"
+   target="_blank"
+   title="WhatsApp">
+    💬
+</a>
+
+
+<script>
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+function showSection(name){
+
+    document
+        .querySelectorAll('.section')
+        .forEach(section=>{
+            section.classList.remove('active');
+        });
+
+    const target=document.getElementById(name);
+
+    if(target){
+        target.classList.add('active');
+    }
+
+    document
+        .querySelectorAll('.nav button')
+        .forEach(button=>{
+            button.classList.remove('active');
+        });
+
+    const nav=document.getElementById('nav-'+name);
+
+    if(nav){
+        nav.classList.add('active');
+    }
+
+    window.scrollTo({
+        top:0,
+        behavior:'smooth'
+    });
+}
+
+
+/* =====================================================
+   DARK MODE
+===================================================== */
+
+function toggleDark(){
+
+    document.body.classList.toggle('dark');
+
+    const dark=document.body.classList.contains('dark');
+
+    localStorage.setItem(
+        'centreDark',
+        dark ? 'true' : 'false'
+    );
+
+    document.getElementById('themeBtn').textContent =
+        dark ? '☀️ Light' : '🌙 Dark';
+}
+
+if(localStorage.getItem('centreDark')==='true'){
+
+    document.body.classList.add('dark');
+
+    document.getElementById('themeBtn').textContent='☀️ Light';
+}
+
+
+/* =====================================================
+   GOOGLE SEARCH
+===================================================== */
+
+function googleSearch(){
+
+    const q=
+        document
+        .getElementById('search')
+        .value
+        .trim();
+
+    if(q){
+
+        window.open(
+            'https://www.google.com/search?q='+
+            encodeURIComponent(q),
+            '_blank'
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   8 PHOTO EDITOR
+===================================================== */
+
+const photoInput=
+    document.getElementById('photoInput');
+
+const canvas=
+    document.getElementById('editorCanvas');
+
+const ctx=
+    canvas.getContext('2d');
+
+const zoomSlider=
+    document.getElementById('zoomSlider');
+
+const xSlider=
+    document.getElementById('xSlider');
+
+const ySlider=
+    document.getElementById('ySlider');
+
+const zoomText=
+    document.getElementById('zoomText');
+
+const xText=
+    document.getElementById('xText');
+
+const yText=
+    document.getElementById('yText');
+
+const backgroundSelect=
+    document.getElementById('backgroundSelect');
+
+const printPhotosEls=
+    document.querySelectorAll('.printPhoto');
+
+const photoBoxes=
+    document.querySelectorAll('.photo-box');
+
+let photo=new Image();
+
+let loaded=false;
+
+let printRotation=0;
+
+let zoom=1;
+
+let posX=0;
+
+let posY=0;
+
+
+/* ---------- UPLOAD ---------- */
+
+photoInput.addEventListener(
+    'change',
+    function(){
+
+        const file=this.files[0];
+
+        if(!file)return;
+
+        if(!file.type.startsWith('image/')){
+
+            alert('कृपया image file चुनें।');
+
+            this.value='';
+
+            return;
+        }
+
+        const reader=new FileReader();
+
+        reader.onload=e=>{
+
+            const image=new Image();
+
+            image.onload=()=>{
+
+                photo=image;
+
+                loaded=true;
+
+                printRotation=0;
+
+                zoom=1;
+
+                posX=0;
+
+                posY=0;
+
+                zoomSlider.value=100;
+
+                xSlider.value=0;
+
+                ySlider.value=0;
+
+                updateLabels();
+
+                drawEditor();
+
+                updatePrintPreview();
+
+            };
+
+            image.src=e.target.result;
+
+        };
+
+        reader.readAsDataURL(file);
+
+    }
+);
+
+
+/* ---------- BACKGROUND ---------- */
+
+function fillCanvas(c,w,h){
+
+    const value=
+        backgroundSelect.value;
+
+    if(value==='white'){
+
+        c.fillStyle='#fff';
+
+        c.fillRect(0,0,w,h);
+
+    }
+
+    else if(value==='lightblue'){
+
+        c.fillStyle='#dbeafe';
+
+        c.fillRect(0,0,w,h);
+
+    }
+
+    else{
+
+        c.clearRect(0,0,w,h);
+
+    }
+
+}
+
+
+/* ---------- DRAW EDITOR ---------- */
+
+function drawEditor(){
+
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+    fillCanvas(
+        ctx,
+        canvas.width,
+        canvas.height
+    );
+
+    if(!loaded){
+
+        ctx.fillStyle='#94a3b8';
+
+        ctx.font='bold 25px Arial';
+
+        ctx.textAlign='center';
+
+        ctx.fillText(
+            'PHOTO UPLOAD करें',
+            300,
+            375
+        );
+
+        return;
+    }
+
+    ctx.save();
+
+    ctx.translate(
+        300+posX,
+        375+posY
+    );
+
+    ctx.rotate(
+        printRotation*Math.PI/180
+    );
+
+    const scale=
+        Math.min(
+            600/photo.width,
+            750/photo.height
+        )*zoom;
+
+    const w=
+        photo.width*scale;
+
+    const h=
+        photo.height*scale;
+
+    ctx.drawImage(
+        photo,
+        -w/2,
+        -h/2,
+        w,
+        h
+    );
+
+    ctx.restore();
+}
+
+
+/* ---------- PRINT PREVIEW ---------- */
+
+function updatePrintPreview(){
+
+    if(!loaded)return;
+
+    const out=
+        document.createElement('canvas');
+
+    out.width=800;
+
+    out.height=1000;
+
+    const c=
+        out.getContext('2d');
+
+    fillCanvas(
+        c,
+        800,
+        1000
+    );
+
+    c.save();
+
+    c.translate(
+        400+posX*1.3,
+        500+posY*1.3
+    );
+
+    c.rotate(
+        printRotation*Math.PI/180
+    );
+
+    const scale=
+        Math.min(
+            800/photo.width,
+            1000/photo.height
+        )*zoom;
+
+    const w=
+        photo.width*scale;
+
+    const h=
+        photo.height*scale;
+
+    c.drawImage(
+        photo,
+        -w/2,
+        -h/2,
+        w,
+        h
+    );
+
+    c.restore();
+
+    const data=
+        out.toDataURL('image/png');
+
+    printPhotosEls.forEach(
+        (image,index)=>{
+
+            image.src=data;
+
+            photoBoxes[index]
+                .classList
+                .add('has-photo');
+
+        }
+    );
+}
+
+
+/* ---------- ROTATE ---------- */
+
+function rotateLeft(){
+
+    if(!loaded){
+
+        alert('पहले फोटो upload करें।');
+
+        return;
+    }
+
+    printRotation=
+        (printRotation-90)%360;
+
+    drawEditor();
+
+    updatePrintPreview();
+}
+
+function rotateRight(){
+
+    if(!loaded){
+
+        alert('पहले फोटो upload करें।');
+
+        return;
+    }
+
+    printRotation=
+        (printRotation+90)%360;
+
+    drawEditor();
+
+    updatePrintPreview();
+}
+
+
+/* ---------- ZOOM ---------- */
+
+function zoomIn(){
+
+    if(!loaded)return;
+
+    zoom=
+        Math.min(
+            2,
+            zoom+.1
+        );
+
+    zoomSlider.value=
+        Math.round(zoom*100);
+
+    updateLabels();
+
+    drawEditor();
+
+    updatePrintPreview();
+}
+
+function zoomOut(){
+
+    if(!loaded)return;
+
+    zoom=
+        Math.max(
+            .5,
+            zoom-.1
+        );
+
+    zoomSlider.value=
+        Math.round(zoom*100);
+
+    updateLabels();
+
+    drawEditor();
+
+    updatePrintPreview();
+}
+
+
+/* ---------- SLIDERS ---------- */
+
+zoomSlider.oninput=function(){
+
+    zoom=
+        Number(this.value)/100;
+
+    updateLabels();
+
+    drawEditor();
+
+    updatePrintPreview();
+};
+
+xSlider.oninput=function(){
+
+    posX=
+        Number(this.value);
+
+    updateLabels();
+
+    drawEditor();
+
+    updatePrintPreview();
+};
+
+ySlider.oninput=function(){
+
+    posY=
+        Number(this.value);
+
+    updateLabels();
+
+    drawEditor();
+
+    updatePrintPreview();
+};
+
+backgroundSelect.onchange=()=>{
+
+    drawEditor();
+
+    updatePrintPreview();
+
+};
+
+
+/* ---------- CROP ---------- */
+
+function cropPhoto(){
+
+    if(!loaded){
+
+        alert('पहले फोटो upload करें।');
+
+        return;
+    }
+
+    const ratio=4/5;
+
+    let cw=photo.width;
+
+    let ch=cw/ratio;
+
+    if(ch>photo.height){
+
+        ch=photo.height;
+
+        cw=ch*ratio;
+
+    }
+
+    const sx=
+        (photo.width-cw)/2;
+
+    const sy=
+        (photo.height-ch)/2;
+
+    const temp=
+        document.createElement('canvas');
+
+    temp.width=
+        Math.round(cw);
+
+    temp.height=
+        Math.round(ch);
+
+    temp
+        .getContext('2d')
+        .drawImage(
+            photo,
+            sx,
+            sy,
+            cw,
+            ch,
+            0,
+            0,
+            cw,
+            ch
+        );
+
+    const image=new Image();
+
+    image.onload=()=>{
+
+        photo=image;
+
+        printRotation=0;
+
+        zoom=1;
+
+        posX=0;
+
+        posY=0;
+
+        zoomSlider.value=100;
+
+        xSlider.value=0;
+
+        ySlider.value=0;
+
+        updateLabels();
+
+        drawEditor();
+
+        updatePrintPreview();
+
+    };
+
+    image.src=
+        temp.toDataURL('image/png');
+}
+
+
+/* ---------- BACKGROUND REMOVE ---------- */
+
+function removeBackground(){
+
+    if(!loaded){
+
+        alert('पहले फोटो upload करें।');
+
+        return;
+    }
+
+    const temp=
+        document.createElement('canvas');
+
+    temp.width=
+        photo.naturalWidth ||
+        photo.width;
+
+    temp.height=
+        photo.naturalHeight ||
+        photo.height;
+
+    const c=
+        temp.getContext('2d');
+
+    c.drawImage(
+        photo,
+        0,
+        0,
+        temp.width,
+        temp.height
+    );
+
+    const imageData=
+        c.getImageData(
+            0,
+            0,
+            temp.width,
+            temp.height
+        );
+
+    const pixels=
+        imageData.data;
+
+    for(
+        let i=0;
+        i<pixels.length;
+        i+=4
+    ){
+
+        const r=pixels[i];
+
+        const g=pixels[i+1];
+
+        const b=pixels[i+2];
+
+        /*
+          Simple white/light background
+          transparency removal.
+        */
+
+        if(
+            r>235 &&
+            g>235 &&
+            b>235
+        ){
+
+            pixels[i+3]=0;
+
+        }
+
+    }
+
+    c.putImageData(
+        imageData,
+        0,
+        0
+    );
+
+    const image=new Image();
+
+    image.onload=()=>{
+
+        photo=image;
+
+        backgroundSelect.value='white';
+
+        drawEditor();
+
+        updatePrintPreview();
+
+    };
+
+    image.src=
+        temp.toDataURL('image/png');
+}
+
+
+/* ---------- RESET ---------- */
+
+function resetPhoto(){
+
+    if(!loaded)return;
+
+    printRotation=0;
+
+    zoom=1;
+
+    posX=0;
+
+    posY=0;
+
+    zoomSlider.value=100;
+
+    xSlider.value=0;
+
+    ySlider.value=0;
+
+    updateLabels();
+
+    drawEditor();
+
+    updatePrintPreview();
+}
+
+
+function updateLabels(){
+
+    zoomText.textContent=
+        Math.round(zoom*100)+'%';
+
+    xText.textContent=posX;
+
+    yText.textContent=posY;
+}
+
+
+/* ---------- PRINT 8 ---------- */
+
+function printPhotos(){
+
+    if(!loaded){
+
+        alert('पहले फोटो upload करें।');
+
+        return;
+    }
+
+    document.body.classList.remove(
+        'print-fold',
+        'print-single-front',
+        'print-single-back'
+    );
+
+    document.body.classList.add(
+        'print-photo'
+    );
+
+    window.print();
+}
+
+
+/* ---------- CLEAR PHOTO ---------- */
+
+function clearPhoto(){
+
+    photoInput.value='';
+
+    loaded=false;
+
+    photo=new Image();
+
+    printRotation=0;
+
+    zoom=1;
+
+    posX=0;
+
+    posY=0;
+
+    printPhotosEls.forEach(
+        (image,index)=>{
+
+            image.removeAttribute('src');
+
+            photoBoxes[index]
+                .classList
+                .remove('has-photo');
+
+        }
+    );
+
+    drawEditor();
+
+    updateLabels();
+}
+
+
+/* =====================================================
+   PVC FOLD
+===================================================== */
+
+const frontFile=
+    document.getElementById('frontFile');
+
+const backFile=
+    document.getElementById('backFile');
+
+const frontImage=
+    document.getElementById('frontImage');
+
+const backImage=
+    document.getElementById('backImage');
+
+
+function bindImageInput(
+    input,
+    image,
+    empty
+){
+
+    input.addEventListener(
+        'change',
+        function(){
+
+            const file=this.files[0];
+
+            if(!file)return;
+
+            if(!file.type.startsWith('image/')){
+
+                alert(
+                    'कृपया JPG, JPEG, PNG या image file चुनें।'
+                );
+
+                this.value='';
+
+                return;
+            }
+
+            const reader=
+                new FileReader();
+
+            reader.onload=e=>{
+
+                image.src=
+                    e.target.result;
+
+                empty.style.display='none';
+
+            };
+
+            reader.readAsDataURL(file);
+
+        }
+    );
+}
+
+
+bindImageInput(
+    frontFile,
+    frontImage,
+    document.getElementById('frontEmpty')
+);
+
+bindImageInput(
+    backFile,
+    backImage,
+    document.getElementById('backEmpty')
+);
+
+
+function printFold(){
+
+    if(
+        !frontImage.src ||
+        !backImage.src
+    ){
+
+        alert(
+            'Front और Back दोनों card image चुनें।'
+        );
+
+        return;
+    }
+
+    document.body.classList.remove(
+        'print-photo',
+        'print-single-front',
+        'print-single-back'
+    );
+
+    document.body.classList.add(
+        'print-fold'
+    );
+
+    window.print();
+}
+
+
+function clearFold(){
+
+    frontFile.value='';
+
+    backFile.value='';
+
+    frontImage.removeAttribute('src');
+
+    backImage.removeAttribute('src');
+
+    document.getElementById(
+        'frontEmpty'
+    ).style.display='flex';
+
+    document.getElementById(
+        'backEmpty'
+    ).style.display='flex';
+}
+
+
+/* =====================================================
+   SINGLE PVC
+===================================================== */
+
+const sf=
+    document.getElementById(
+        'singleFrontFile'
+    );
+
+const sb=
+    document.getElementById(
+        'singleBackFile'
+    );
+
+const siF=
+    document.getElementById(
+        'singleFrontImage'
+    );
+
+const siB=
+    document.getElementById(
+        'singleBackImage'
+    );
+
+
+bindImageInput(
+    sf,
+    siF,
+    document.getElementById(
+        'singleFrontEmpty'
+    )
+);
+
+bindImageInput(
+    sb,
+    siB,
+    document.getElementById(
+        'singleBackEmpty'
+    )
+);
+
+
+function printSingle(side){
+
+    const image=
+        side==='front'
+        ? siF
+        : siB;
+
+    if(!image.src){
+
+        alert(
+            'पहले '+
+            side.toUpperCase()+
+            ' card image चुनें।'
+        );
+
+        return;
+    }
+
+    document.body.classList.remove(
+        'print-photo',
+        'print-fold',
+        'print-single-front',
+        'print-single-back'
+    );
+
+    document.body.classList.add(
+        side==='front'
+        ? 'print-single-front'
+        : 'print-single-back'
+    );
+
+    window.print();
+}
+
+
+function clearSingle(){
+
+    sf.value='';
+
+    sb.value='';
+
+    siF.removeAttribute('src');
+
+    siB.removeAttribute('src');
+
+    document.getElementById(
+        'singleFrontEmpty'
+    ).style.display='flex';
+
+    document.getElementById(
+        'singleBackEmpty'
+    ).style.display='flex';
+}
+
+
+/* =====================================================
+   GALLERY
+===================================================== */
+
+let galleryIndex=0;
+
+const galleryTrack=
+    document.getElementById(
+        'galleryTrack'
+    );
+
+const galleryDots=
+    document.querySelectorAll(
+        '.gallery-dots span'
+    );
+
+function showGallery(index){
+
+    const total=
+        galleryTrack.children.length;
+
+    if(index>=total){
+        galleryIndex=0;
+    }
+
+    else if(index<0){
+        galleryIndex=total-1;
+    }
+
+    else{
+        galleryIndex=index;
+    }
+
+    galleryTrack.style.transform=
+        'translateX(-'+
+        (galleryIndex*100)+
+        '%';
+
+    galleryDots.forEach(
+        (dot,i)=>{
+            dot.classList.toggle(
+                'active',
+                i===galleryIndex
+            );
+        }
+    );
+}
+
+function galleryMove(n){
+
+    showGallery(
+        galleryIndex+n
+    );
+}
+
+function galleryCurrent(n){
+
+    showGallery(n);
+}
+
+
+/* AUTO GALLERY */
+
+setInterval(
+    ()=>{
+        if(
+            document.getElementById(
+                'gallery'
+            ).classList.contains('active')
+        ){
+            galleryMove(1);
+        }
+    },
+    4000
+);
+
+
+/* =====================================================
+   AFTER PRINT
+===================================================== */
+
+window.addEventListener(
+    'afterprint',
+    ()=>{
+        document.body.classList.remove(
+            'print-photo',
+            'print-fold',
+            'print-single-front',
+            'print-single-back'
+        );
+    }
+);
+
+
+/* =====================================================
+   INITIALIZE
+===================================================== */
+
+drawEditor();
+
+updateLabels();
+
+showGallery(0);
+
+</script>
+
+</body>
+</html>
