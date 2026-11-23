@@ -2,11 +2,11 @@
 import os
 import sqlite3
 from functools import wraps
-from flask import Flask, render_template_string, request, redirect, session, url_for, flash
+from flask import Flask, render_template_string, request, redirect, session, url_for
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
-app.secret_key = os.environ.get("SECRET_KEY", "change-this-secret-key")
+app.secret_key = os.environ["SECRET_KEY"]
 
 DB = "shree_karni.db"
 
@@ -23,25 +23,28 @@ def init_db():
             username TEXT UNIQUE,
             password TEXT
         )""")
+
         db.execute("""
         CREATE TABLE IF NOT EXISTS courses (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT NOT NULL,
             details TEXT
         )""")
+
         db.execute("""
         CREATE TABLE IF NOT EXISTS notices (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             title TEXT NOT NULL,
             details TEXT
         )""")
+
         db.execute("""
         CREATE TABLE IF NOT EXISTS gallery (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             image_url TEXT NOT NULL
         )""")
 
-                username = os.environ.get("ADMIN_USERNAME")
+        username = os.environ.get("ADMIN_USERNAME")
         password = os.environ.get("ADMIN_PASSWORD")
 
         if not username or not password:
@@ -60,7 +63,6 @@ def init_db():
             db.execute(
                 "INSERT INTO admins (username,password) VALUES (?,?)",
                 (username, generate_password_hash(password))
-            )
             )
 
 init_db()
@@ -141,9 +143,12 @@ def login():
             ).fetchone()
 
         if user and check_password_hash(user["password"], request.form["password"]):
+            session.clear()
             session["admin"] = user["username"]
             return redirect("/admin")
-        return "Invalid username or password"
+
+        return "Invalid username or password", 401
+
     return render_template_string(LOGIN_HTML)
 
 @app.route("/admin")
@@ -153,6 +158,7 @@ def admin():
         courses = db.execute("SELECT * FROM courses").fetchall()
         notices = db.execute("SELECT * FROM notices").fetchall()
         gallery = db.execute("SELECT * FROM gallery").fetchall()
+
     return render_template_string(
         ADMIN_HTML, courses=courses, notices=notices, gallery=gallery
     )
@@ -161,11 +167,13 @@ def admin():
 @login_required
 def add_course():
     with get_db() as db:
-        db.execute("INSERT INTO courses(name,details) VALUES (?,?)",
-                   (request.form["name"], request.form["details"]))
+        db.execute(
+            "INSERT INTO courses(name,details) VALUES (?,?)",
+            (request.form["name"], request.form["details"])
+        )
     return redirect("/admin")
 
-@app.route("/delete-course/<int:id>")
+@app.route("/delete-course/<int:id>", methods=["POST"])
 @login_required
 def delete_course(id):
     with get_db() as db:
@@ -176,11 +184,13 @@ def delete_course(id):
 @login_required
 def add_notice():
     with get_db() as db:
-        db.execute("INSERT INTO notices(title,details) VALUES (?,?)",
-                   (request.form["title"], request.form["details"]))
+        db.execute(
+            "INSERT INTO notices(title,details) VALUES (?,?)",
+            (request.form["title"], request.form["details"])
+        )
     return redirect("/admin")
 
-@app.route("/delete-notice/<int:id>")
+@app.route("/delete-notice/<int:id>", methods=["POST"])
 @login_required
 def delete_notice(id):
     with get_db() as db:
@@ -191,18 +201,21 @@ def delete_notice(id):
 @login_required
 def add_image():
     with get_db() as db:
-        db.execute("INSERT INTO gallery(image_url) VALUES (?)",
-                   (request.form["image_url"],))
+        db.execute(
+            "INSERT INTO gallery(image_url) VALUES (?)",
+            (request.form["image_url"],)
+        )
     return redirect("/admin")
 
-@app.route("/delete-image/<int:id>")
+@app.route("/delete-image/<int:id>", methods=["POST"])
 @login_required
 def delete_image(id):
     with get_db() as db:
         db.execute("DELETE FROM gallery WHERE id=?", (id,))
     return redirect("/admin")
 
-@app.route("/logout")
+@app.route("/logout", methods=["POST"])
+@login_required
 def logout():
     session.clear()
     return redirect("/login")
